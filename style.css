@@ -1,25 +1,41 @@
 
 body {
-    width: vw;
+    width: 30vw;
     height: 80vh;
-    background-color: pink;
+    background-image: url("img/jpg/table.jpg");
     overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 15vh auto 0;
     border: 2px dashed blue;
   }
 
   .title {
     writing-mode: horizontal-tb;
-    border: 2px dashed blue; 
+    border: 2px dashed #e5a87f; 
     font-family: Optima;
     text-align: center;
     font-size: 60px;
+    color: #e5a87f;
+    border-radius: 25px;
+    width: 650px;
+    margin: auto;
+    background-color: #da2121;
   }
   h2 {
     writing-mode: vertical-rl;
     font-size: 5vw;
     margin: 1vw;
     font-family: 'Courier New', Courier, monospace;
+  }
+
+  #cards {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10%;
+    border: 2px dashed #e5a87f; 
+    display: flex;
+    justify-content: space-between;
   }
   
   
