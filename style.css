@@ -1,18 +1,49 @@
 
 body {
-    width: 30vw;
-    height: 80vh;
+  display: flex;
+  flex-direction: column;
     background-image: url("img/jpg/table.jpg");
     overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 15vh auto 0;
+    margin: auto 0;
     border: 2px dashed blue;
+    margin-bottom: 5px;
+  }
+
+
+  #options {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 300px;
+    border-radius: 10px;
+    font-size: 25px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .option {
+    font-size: 25px;
+    text-align: center;
+    border-radius: 25px;
+    margin: 10px auto 10px auto;
+    width: 250px;
+    color: #201d1b;
+    background-color: #f3efef;
+    border: 1px solid black;
+  }
+  .option:hover {
+    cursor: pointer;
+    background-color: #cabbbb;
   }
 
   .title {
     writing-mode: horizontal-tb;
-    border: 2px dashed #e5a87f; 
+    border: 2px solid #e5a87f; 
     font-family: Optima;
     text-align: center;
     font-size: 60px;
@@ -22,6 +53,29 @@ body {
     margin: auto;
     background-color: #da2121;
   }
+
+  .playCard {
+    border-radius: 10px;
+    flex-shrink: 1;
+  }
+
+  #titles {
+      height: 100px;
+      border: 2px dashed #e5a87f;
+      display: flex;
+      justify-content: space-around;
+  }
+
+  .titleCards {
+    font-size: 25px;
+    text-align: center;
+    border-radius: 25px;
+    margin: 50px auto 20px auto;
+    width: 250px;
+    color: #e5a87f;
+    background-color: #da2121;
+  }
+
   h2 {
     writing-mode: vertical-rl;
     font-size: 5vw;
@@ -29,11 +83,65 @@ body {
     font-family: 'Courier New', Courier, monospace;
   }
 
+  #board {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 2vh;
+    height: 70vh;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  @media screen and (max-width: 850px) {
+    #board {
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    body {
+      width: 80vw;
+    }
+
+    .playCard {
+      max-width: 100px;
+    }
+
+    .option {
+      font-size: 25px;
+      text-align: center;
+      border-radius: 25px;
+      width: 80%;
+      max-width: 200px;
+    }
+  }
+
+  #yourCount, #dealerCount {
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 25px;
+    line-height: 40px;
+    font-family: Optima;
+    color: #e5a87f;
+    background-color: #da2121;
+    text-align: center;
+  }
+
+  #yourCards {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #dealerCards {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
   #cards {
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 10%;
-    border: 2px dashed #e5a87f; 
+    border: 2px solid #e5a87f; 
     display: flex;
     justify-content: space-between;
   }
@@ -74,22 +182,6 @@ body {
     justify-content: start;
     align-items: center;
     flex-grow: 1;
-  }
-  
-    
-  .titleCard {
-    padding: 2vw;
-    box-sizing: border-box;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 60vw;
-    height: calc(60vw * 1.4);
-    border-radius: 15px;
-    background: aquamarine;
-    transition: 2s;
-    box-shadow: -10px -5px 5px 5px rgb(0 0 0 / 0.2);
   }
   
   /* TYPOGRAPHY */
@@ -294,13 +386,6 @@ body {
       padding: 10px;
     }
               
-    .titleCard {
-      padding: 10px;
-      width: 300px;
-      height: calc(300px * 1.4);
-      border-radius: 15px;
-      box-shadow: -10px -5px 5px 5px rgb(0 0 0 / 0.2);
-    }
   
     /* TYPOGRAPHY RESIZE */
   
