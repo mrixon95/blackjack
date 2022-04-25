@@ -3,19 +3,166 @@ body {
   display: flex;
   flex-direction: column;
     background-image: url("img/jpg/table.jpg");
-    overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
     margin: auto 0;
-    border: 2px dashed blue;
-    margin-bottom: 5px;
+    --primary: #FFCE00;
+    --secondary: #FE4880;
+    --dark: #212121;
+    --light: #F3F3F3;
   }
+
+  .playCard {
+    position: relative;
+    display: inline;
+    width : 40%;
+    margin: 0px auto;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+  .playCard.is-flipped {
+    transform: rotateY(180deg);
+  }
+  img {
+    border-radius: 5px;
+  }
+  .frontCard.back-invisible {
+    backface-visibility: hidden;
+  }
+  .backCard.back-invisible {
+    backface-visibility: hidden;
+  }
+
+  .backCard {
+    width: 100%;
+    position: absolute;
+    display: inline;
+    transform: rotateX(180deg);
+  }
+  img {
+    position: relative;
+    width: 100%;
+  }
+
+  .frontCard {
+    z-index: 1;
+    position: absolute;
+    display: inline;
+    width: 100%;
+  }
+
+  .card__inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .card__inner.is-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  
+  .card__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card__face--front {
+    background-image: linear-gradient(to bottom right, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card__face--front h2 {
+    color: #FFF;
+    font-size: 32px;
+  }
+  
+  .card__face--back {
+    background-color: var(--light);
+    transform: rotateY(180deg);
+  }
+  
+  .card__content {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card__header {
+    position: relative;
+    padding: 30px 30px 40px;
+  }
+  
+  .card__header:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to bottom left, var(--primary) 10%, var(--secondary) 115%);
+    z-index: -1;
+    border-radius: 0px 0px 50% 0px;
+  }
+  
+  .pp {
+    display: block;
+    width: 128px;
+    height: 128px;
+    margin: 0 auto 30px;
+    border-radius: 50%;
+    background-color: #FFF;
+    border: 5px solid #FFF;
+    object-fit: cover;
+  }
+  
+  .card__header h2 {
+    color: #FFF;
+    font-size: 32px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  .card__body {
+    padding: 30px;
+  }
+  
+  .card__body h3 {
+    color: var(--dark);
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .card__body p {
+    color: var(--dark);
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+
+  #yourSection {
+    width: 40%;
+  }
+
 
 
   #options {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
@@ -28,13 +175,15 @@ body {
 
   .option {
     font-size: 25px;
+    line-height: 60px;
     text-align: center;
     border-radius: 25px;
-    margin: 10px auto 10px auto;
+    margin: 20px auto 20px auto;
     width: 250px;
     color: #201d1b;
+    box-shadow: 2px 2px 5px;
     background-color: #f3efef;
-    border: 1px solid black;
+    border: 10px solid rgb(201, 118, 118);
   }
   .option:hover {
     cursor: pointer;
@@ -55,7 +204,7 @@ body {
   }
 
   .playCard {
-    border-radius: 10px;
+    border-radius: 30px;
     flex-shrink: 1;
   }
 
@@ -70,7 +219,7 @@ body {
     font-size: 25px;
     text-align: center;
     border-radius: 25px;
-    margin: 50px auto 20px auto;
+    margin: 20px auto 20px auto;
     width: 250px;
     color: #e5a87f;
     background-color: #da2121;
@@ -87,7 +236,7 @@ body {
     margin-left: 5vw;
     margin-right: 5vw;
     margin-top: 2vh;
-    height: 70vh;
+    height: 60vh;
     display: flex;
     justify-content: space-evenly;
   }
@@ -95,28 +244,73 @@ body {
   @media screen and (max-width: 850px) {
     #board {
       flex-direction: column;
-      height: 100vh;
+      height: 60vh;
+      justify-content: space-around;
     }
 
-    body {
-      width: 80vw;
+    #yourCount, #dealerCount {
+      position: relative;
+      margin-top: 5vh;
+      margin-left: auto;
+      margin-right: auto;
+      width: 300px;
+      height: 40px;
+      border-radius: 10px;
+      font-size: 25px;
+      line-height: 40px;
+      font-family: Optima;
+      color: #e5a87f;
+      background-color: #da2121;
+      text-align: center;
+    }
+
+    #options {
+      flex-direction: row;
+      height: 100px;
+      margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
     }
 
     .playCard {
-      max-width: 100px;
+      position: absolute;
+      max-width: 150px;
     }
 
     .option {
+      line-height: 45px;
       font-size: 25px;
       text-align: center;
       border-radius: 25px;
       width: 80%;
-      max-width: 200px;
+      max-width: 100px;
+      margin: 20px;
     }
+
+    #options {
+      justify-content: center;
+
+    }
+
+    .title {
+      writing-mode: horizontal-tb;
+      border: 2px solid #e5a87f; 
+      font-family: Optima;
+      text-align: center;
+      font-size: 30px;
+      color: #e5a87f;
+      border-radius: 25px;
+      max-width: 350px;
+      margin: 10px auto 0px auto;
+      background-color: #da2121;
+    }
+  
+
   }
 
   #yourCount, #dealerCount {
-    margin-top: 20px;
+    position: relative;
+    margin-top: 5vh;
     height: 40px;
     border-radius: 10px;
     font-size: 25px;
@@ -129,12 +323,15 @@ body {
 
   #yourCards {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   #dealerCards {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    height: 30vh;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 
 
@@ -155,374 +352,16 @@ body {
     justify-content: center;
     align-items: center;
   }
-  
-  /* CARDS LAYOUT */
-  
+
+  .title {
+    margin-bottom: 40px;
+  }
+
+
   .card {
-    position:absolute;
-    box-sizing: border-box;
-    display: flex;
-    align-items: start;
-    width: 60vw;
-    height: calc(60vw * 1.4);
-    border-radius: 15px;
-    border: 1px solid white;
-    background: white;
-    transition: 1s;
-    box-shadow: -10px -5px 5px 5px rgb(0 0 0 / 0.2);
-    padding-top: 5px;
-    text-align: center;
+    margin: 100px auto 0;
+    width: 400px;
+    height: 600px;
+    perspective: 1000px;
   }
   
-  .cardBody {
-    padding: 1vw;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    flex-grow: 1;
-  }
-  
-  /* TYPOGRAPHY */
-  
-  h1 {
-    font-size: 10vw;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  
-  }
-  
-  h2 {
-    writing-mode: vertical-rl;
-    font-size: 5vw;
-    margin: 1vw;
-    font-family: 'Courier New', Courier, monospace;
-  }
-  
-  span {
-    color: black;
-    font-size: 4.5vw;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .signature {
-    font-size: 3.5vw;
-  }
-  
-  /* LINKS */
-  
-  a {
-    font-size: 4vw;
-    margin-top: 4vw;
-    display: inline-block;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 1vw;
-    color: white;
-    background: red;
-    border-radius: 2vw;
-    border: 2px solid red;
-  }
-  
-  a:hover {
-    color: red;
-    background: transparent;
-  }
-  
-  /* FANOUT ANIMATION */
-  
-  @keyframes fanout1 {
-    from {
-      transform: translateY(0) translateX(0) rotate(0);
-    }
-  
-    to {
-      transform: translateY(0) translateX(-12vw) rotate(-9deg);
-    }
-  }
-  
-  @keyframes fanout2 {
-    from {
-      transform: translateY(0) translateX(0) rotate(0);
-    }
-  
-    to {
-      transform: translateY(0px) translateX(-7vw) rotate(-6deg);
-    }
-  }
-  
-  @keyframes fanout3 {
-    from {
-      transform: translateY(0) translateX(0) rotate(0);
-    }
-  
-    to {
-      transform: rotate(-3deg) translateX(-2vw);
-    }
-  }
-  
-  @keyframes fanout4 {
-    from {
-      transform: translateY(0) translateX(0) rotate(0);
-    }
-  
-    to {
-      transform: translateY(0px) translateX(3vw) rotate(0deg);
-    }
-  }
-  
-  @keyframes fanout5 {
-    from {
-      transform: translateY(0) translateX(0) rotate(0);
-    }
-  
-    to {
-      transform: translateY(0) translateX(8vw) rotate(3deg);
-    }
-  }
-  
-  @keyframes fanout6 {
-    from {
-      transform: translateY(0) translateX(0) rotate(0);
-    }
-  
-    to {
-      transform: translateY(0) translateX(13vw) rotate(6deg);
-    }
-  }
-  
-  /* ON-TAP ANIMATION (RADIO BUTTON HACK) */
-  
-  #card1 {
-    animation: fanout1 1s;
-    transform: translateY(0) translateX(-12vw) rotate(-9deg);
-    z-index: 0;
-  }
-  
-  
-  input:checked + #card1 {
-    transform: translateY(-35vw) translateX(-15vw) rotate(0deg);
-  }
-  
-  
-  #card2 {
-    animation: fanout2 1s;
-    transform: translateY(0px) translateX(-7vw) rotate(-6deg);
-    z-index: 1;
-  }
-  
-  
-  input:checked + #card2 {
-    transform: translateY(-35vw) translateX(-9vw) rotate(0deg);
-  }
-  
-  
-  #card3 {
-      animation: fanout3 1s;
-      transform: rotate(-3deg) translateX(-2vw);
-    z-index: 2;
-  }
-  
-  input:checked + #card3 {
-    transform: translateY(-35vw) translateX(-3vw) rotate(0deg);
-  }
-  
-  #card4 {
-    animation: fanout4 1s;
-    transform: translateY(0px) translateX(3vw) rotate(0deg);
-    z-index: 3;
-  }
-  
-  input:checked + #card4 {
-    transform: translateY(-35vw) translateX(3vw) rotate(0deg);
-  }
-  
-  #card5 {
-    animation: fanout5 1s;
-    transform: translateY(0) translateX(8vw) rotate(3deg);
-    z-index: 4;
-  }
-  
-  input:checked + #card5 {
-    transform: translateY(-35vw) translateX(9vw) rotate(0deg);
-  }
-  
-  #card6 {
-    animation: fanout6 1s;
-    transform: translateY(0) translateX(13vw) rotate(6deg);
-    z-index: 5;
-  }
-  
-  /* DESKTOP & TABLET SIZING */
-  
-  @media screen and (min-width:800px) {
-  
-    /* MAIN LAYOUT RESIZE */
-  
-    body {
-      width: 100%;
-      height: 100vh;
-    }
-          
-    .container {
-      width: 500px;
-      height: 100vh;
-      margin: 0 auto;
-    }
-  
-    /* CARD LAYOUT RESIZE */
-          
-    .card {
-      width: 300px;
-      height: calc(300px * 1.4);
-      border-radius: 15px;
-      border: 1px solid white;
-      transition: 1s;
-      box-shadow: -10px -5px 5px 5px rgb(0 0 0 / 0.2);
-      padding-top: 5px;
-    }
-          
-    .cardBody {
-      padding: 10px;
-    }
-              
-  
-    /* TYPOGRAPHY RESIZE */
-  
-    h1 {
-      font-size: 50px;
-    }
-  
-    h2 {
-      font-size: 30px;
-      margin: 15px 0;
-    }
-          
-    span {
-      font-size: 25px;
-      margin-bottom: 10px;
-    }
-  
-    .signature {
-      font-size: 18px;
-    }
-  
-    /* LINK RESIZE */
-          
-    a {
-      font-size: 20px;
-      margin-top: 20px;
-      padding: 10px;
-      border-radius: 25px;
-      border: 2px solid red;
-    }
-  
-    /* FANOUT ANIMATION RE-POSITION */
-          
-    @keyframes fanout1 {
-      from {
-        transform: translateY(0) translateX(0) rotate(0);
-      }
-        
-      to {
-        transform: translateY(0) translateX(-120px) rotate(-13deg);
-      }
-    }
-        
-    @keyframes fanout2 {
-      from {
-        transform: translateY(0) translateX(0) rotate(0);
-      }
-        
-      to {
-        transform: translateY(0px) translateX(-80px) rotate(-8deg);
-      }
-    }
-        
-    @keyframes fanout3 {
-      from {
-        transform: translateY(0) translateX(0) rotate(0);
-      }
-        
-      to {
-        transform: rotate(-3deg) translateX(-30px);
-      }
-    }
-        
-    @keyframes fanout4 {
-      from {
-        transform: translateY(0) translateX(0) rotate(0);
-      }
-        
-      to {
-        transform: translateY(0px) translateX(10px) rotate(1deg);
-      }
-    }
-        
-    @keyframes fanout5 {
-      from {
-        transform: translateY(0) translateX(0) rotate(0);
-      }
-        
-      to {
-        transform: translateY(0) translateX(60px) rotate(4deg);
-      }
-    }
-        
-    @keyframes fanout6 {
-      from {
-        transform: translateY(0) translateX(0) rotate(0);
-      }
-        
-      to {
-        transform: translateY(0) translateX(100px) rotate(10deg);
-      }
-    }
-        
-    /* ON-TAP ANIMATION RE-POSITION */
-          
-    #card1 {
-      transform: translateY(0) translateX(-120px) rotate(-13deg);
-    }
-  
-    input:checked + #card1 {
-      transform: translateY(-200px) translateX(-120px) rotate(0deg);
-    }
-          
-    #card2 {
-      transform: translateY(0px) translateX(-80px) rotate(-8deg);
-    }
-  
-          
-    input:checked + #card2 {
-      transform: translateY(-200px) translateX(-80px) rotate(0deg);
-    }  
-          
-    #card3 {
-      transform: rotate(-3deg) translateX(-30px);
-    }
-  
-    input:checked + #card3 {
-      transform: translateY(-200px) translateX(-30px) rotate(0deg);
-    }
-          
-    #card4 {
-      transform: translateY(0px) translateX(10px) rotate(1deg);
-    }
-  
-    input:checked + #card4 {
-      transform: translateY(-200px) translateX(10px) rotate(0deg);
-    }
-          
-    #card5 {
-      transform: translateY(0) translateX(60px) rotate(4deg);
-    }
-  
-    input:checked + #card5 {
-      transform: translateY(-200px) translateX(60px) rotate(0deg);
-    }
-          
-    #card6 {
-      transform: translateY(0) translateX(100px) rotate(10deg);
-    }
-  }

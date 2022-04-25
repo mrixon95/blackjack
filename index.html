@@ -9,7 +9,6 @@
     <title>Black Jack</title>
     <meta name="author" content="Michael Rixon">
     <meta name="description">
-    <script src="index.js"></script>
 </head>
 
 <body>
@@ -17,12 +16,26 @@
     <h2 class="title">Welcome to Black Jack </h2>
     <div id="board">
         <div id="yourSection">
-            <h4 class="titleCards">Your cards </h4>
-            <div id="yourCards">
-                <img class="playCard" width="47%" src="img/jpg/02D.jpg"/>
-                <img class="playCard" width="47%" src="img/jpg/02D.jpg"/>
+            <h4 class="titleCards">Player </h4>
+            <div id="dealerCards">
+                <div class="playCard">
+                    <div class="frontCard" z-index="1">
+                        <img src="img/jpg/blank.jpg"/>
+                    </div>
+                    <div class="backCard back-invisible">
+                        <img src="img/jpg/02C.jpg"/>
+                    </div>
+                </div>
+                <div class="playCard">
+                    <div class="frontCard" z-index="1">
+                        <img src="img/jpg/blank.jpg"/>
+                    </div>
+                    <div class="backCard back-invisible">
+                        <img src="img/jpg/02C.jpg"/>
+                    </div>
+                </div>
             </div>
-            <div id="yourCount">
+            <div id="dealerCount">
                 Count - 12
             </div>
         </div>
@@ -32,11 +45,25 @@
             <h4 class="option">Stand</h4>
         </div>
 
-        <div id="dealerSection">
+        <div id="yourSection">
             <h4 class="titleCards">Dealer </h4>
             <div id="dealerCards">
-                <img class="playCard" width="47%" src="img/jpg/02D.jpg"/>
-                <img class="playCard" width="47%" src="img/jpg/02D.jpg"/>
+                <div class="playCard">
+                    <div class="frontCard" z-index="1">
+                        <img src="img/jpg/blank.jpg"/>
+                    </div>
+                    <div class="backCard back-invisible">
+                        <img src="img/jpg/02C.jpg"/>
+                    </div>
+                </div>
+                <div class="playCard">
+                    <div class="frontCard" z-index="1">
+                        <img src="img/jpg/blank.jpg"/>
+                    </div>
+                    <div class="backCard back-invisible">
+                        <img src="img/jpg/02C.jpg"/>
+                    </div>
+                </div>
             </div>
             <div id="dealerCount">
                 Count - 12
@@ -44,61 +71,7 @@
         </div>
     </div>
 
-
-    <!-- <div class="container">
-        <input type="checkbox" id="checkbox1" hidden />
-        <label class="card" id="card1" for="checkbox1">
-            <div class="cardBody">
-                <span>Information Responses </span>
-                <a href="./100s.html">Practice 100's</a>
-            </div>
-        </label>
-
-        <input type="checkbox" id="checkbox2" hidden>
-        <label class="card" id="card2" for="checkbox2">
-            <h2>200 - 299</h2>
-            <div class="cardBody">
-                <span>Successful Responses </span>
-                <a href="./200s.html">Practice 200's</a>
-            </div>
-        </label>
-
-
-        <input type="checkbox" id="checkbox3" hidden>
-        <label class="card" id="card3" for="checkbox3">
-            <h2>300 - 399</h2>
-            <div class="cardBody">
-                <span>Redirection Messages </span>
-                <a href="./300s.html">Practice 300's</a>
-            </div>
-        </label>
-
-        <input type="checkbox" id="checkbox4" hidden>
-        <label class="card" id="card4" for="checkbox4">
-            <h2>400 - 499</h2>
-            <div class="cardBody">
-                <span>Client Error Responses</span>
-                <a href="./400s.html">Practice 400's</a>
-            </div>
-        </label>
-
-        <input type="checkbox" id="checkbox5" hidden>
-        <label class="card" id="card5" for="checkbox5">
-            <h2>500 - 599</h2>
-            <div class="cardBody">
-                <span>Server Error Responses </span>
-                <a href="./500s.html">Practice 500's</a>
-            </div>
-        </label>
-
-        <div class="titleCard" id="card6">
-            <h1>HTTP FLASH CARDS</h1>
-            <span class="titleSpan">What are these status codes?</span><br>
-            <span class="signature">by Stephen Smith</span>
-        </div> -->
-
-    <!-- </div> -->
-
+    <script src="index.js"></script>
 </body>
 
 </html>
